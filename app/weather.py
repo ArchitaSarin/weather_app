@@ -72,7 +72,7 @@ def clean(response):
 
     # iterating through the lines and clean each one
     for line in lines:
-        if line.strip():  # Check if the line is not empty
+        if line.strip():  # only append if the line isn't empty
             cleaned.append(f"{line.strip()}")
             
     return "\n".join(cleaned)
