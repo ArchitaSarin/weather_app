@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Weather App</title>
+    
+</head>
+<body>
+    
+
+    <div class="container">
+        <div class="navbar-container">
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('index') }}">home</a></li>
+                    <li><a href="{{ url_for('info') }}">info</a></li>
+                </ul>
+            </nav>
+        </div>
+        
+        <h1>☁️ weather forecast ☁️</h1>
+        <form method="POST">
+            <input type="text" name="location" placeholder="enter your city" required>
+            <button type="submit">search</button>
+        </form>
+
+        {% if current %}
+            {% if location %}
+                <h2>current weather in {{location}}</h2>
+                <pre>{{ current }}</pre>
+            {% endif %}
+        {% endif %}
+        
+        {% if forecast %}
+            <h2>7 day forecast</h2>
+            <pre>{{ forecast }}</pre>
+        {% endif %}
+
+        {% if ai %}
+            <div class="ai-assistant">
+                <h2>AI assistant response:</h2>
+                <pre>{{ ai }}</pre>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
